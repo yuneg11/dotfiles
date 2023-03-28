@@ -45,6 +45,8 @@ DISABLE_UPDATE_PROMPT="true"
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
+export LS_COLORS="$LS_COLORS:ow=01;34"
+
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
@@ -82,6 +84,10 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-completions
+  zsh-interactive-cd
+  per-directory-history
+  tmux
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -114,27 +120,11 @@ export LC_ALL=ko_KR.UTF-8
 
 ZSH_DISABLE_COMPFIX="true"
 
+setopt NO_NOMATCH
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export LS_COLORS="$LS_COLORS:ow=01;34"
 
 if [ -f ~/.zcompdump ]; then
     rm ~/.zcompdump*
 fi
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/siml/egyun/conda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/siml/egyun/conda3/etc/profile.d/conda.sh" ]; then
-        . "/siml/egyun/conda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/siml/egyun/conda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
